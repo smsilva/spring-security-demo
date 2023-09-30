@@ -1,20 +1,23 @@
 package com.github.smsilva.wasp.demo.springsecuritydemo;
 
+import java.util.UUID;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import jakarta.websocket.server.PathParam;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("greetings")
 public class GreetingsController {
 
-    @GetMapping("/greeting/{name}")
-	public ResponseEntity<String> greeting(@PathParam("name") String name) {
-		
+    @GetMapping("hi")
+	public ResponseEntity<String> hi() {
+        String message = "Hi %s".formatted(UUID.randomUUID().toString());
+
 		return ResponseEntity
             .ok()
-            .body("Hi: " + name);
+            .body(message );
 	}
    
 }
