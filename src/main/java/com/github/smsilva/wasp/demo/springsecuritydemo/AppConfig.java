@@ -26,7 +26,7 @@ public class AppConfig {
                         .allowedMethods("*")
                         .allowedOrigins("http://localhost:3000");
             }
-
+            
         };
     }
 
@@ -38,9 +38,10 @@ public class AppConfig {
                 .csrf(csrf -> csrf
                         .disable())
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .requestMatchers("/actuator/**").permitAll()
                         .requestMatchers("/me").permitAll()
-                        .requestMatchers(HttpMethod.OPTIONS).permitAll()
+                        .requestMatchers("/api/**").permitAll()
                         .anyRequest().authenticated())
                 .httpBasic(withDefaults())
                 .build();
