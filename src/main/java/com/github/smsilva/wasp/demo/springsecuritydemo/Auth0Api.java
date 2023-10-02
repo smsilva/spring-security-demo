@@ -29,4 +29,32 @@ public class Auth0Api {
                 .build();
     }
 
+    @GetMapping("/public")
+    ResponseEntity<String> publicRoute(HttpServletRequest request) {
+        LOGGER.info("Received request: {}", request);
+
+        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
+            LOGGER.info("{}: {}", headerName, request.getHeader(headerName));
+        });
+
+        return ResponseEntity
+                .ok()
+                .header("extra-message", "hi")
+                .build();
+    }
+
+    @GetMapping("/private")
+    ResponseEntity<String> privateRoute(HttpServletRequest request) {
+        LOGGER.info("Received request: {}", request);
+
+        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
+            LOGGER.info("{}: {}", headerName, request.getHeader(headerName));
+        });
+
+        return ResponseEntity
+                .ok()
+                .header("extra-message", "hi")
+                .build();
+    }
+
 }
