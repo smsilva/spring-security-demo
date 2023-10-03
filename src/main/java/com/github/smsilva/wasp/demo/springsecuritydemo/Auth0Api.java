@@ -16,7 +16,7 @@ public class Auth0Api {
     private static final Logger LOGGER = LoggerFactory.getLogger(Auth0Api.class);
 
     @GetMapping("/public")
-    ResponseEntity<Void> publicRequest(HttpServletRequest request) {
+    ResponseEntity<Void> publicRoute(HttpServletRequest request) {
         LOGGER.info("Received request: {}", request);
 
         request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
@@ -30,7 +30,7 @@ public class Auth0Api {
     }
 
     @GetMapping("/private")
-    ResponseEntity<Void> privateRequest(HttpServletRequest request) {
+    ResponseEntity<Void> privateRoute(HttpServletRequest request) {
         LOGGER.info("Received request: {}", request);
 
         request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
@@ -40,34 +40,6 @@ public class Auth0Api {
         return ResponseEntity
                 .ok()
                 .header("extra-message", "private")
-                .build();
-    }
-
-    @GetMapping("/public")
-    ResponseEntity<String> publicRoute(HttpServletRequest request) {
-        LOGGER.info("Received request: {}", request);
-
-        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
-            LOGGER.info("{}: {}", headerName, request.getHeader(headerName));
-        });
-
-        return ResponseEntity
-                .ok()
-                .header("extra-message", "hi")
-                .build();
-    }
-
-    @GetMapping("/private")
-    ResponseEntity<String> privateRoute(HttpServletRequest request) {
-        LOGGER.info("Received request: {}", request);
-
-        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
-            LOGGER.info("{}: {}", headerName, request.getHeader(headerName));
-        });
-
-        return ResponseEntity
-                .ok()
-                .header("extra-message", "hi")
                 .build();
     }
 
