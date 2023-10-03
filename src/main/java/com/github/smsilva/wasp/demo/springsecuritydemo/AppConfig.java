@@ -41,11 +41,9 @@ public class AppConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .requestMatchers("/actuator/**").permitAll()
-                        .requestMatchers("/api/external").permitAll()
                         .requestMatchers("/api/public").permitAll()
                         .anyRequest().authenticated())
-                .httpBasic(withDefaults())
-                .oauth2ResourceServer((oauth2) -> oauth2
+                .oauth2ResourceServer(oauth2 -> oauth2
                     .jwt(withDefaults()))
                 .build();
     }
