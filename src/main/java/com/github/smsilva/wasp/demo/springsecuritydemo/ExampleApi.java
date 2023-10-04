@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("api")
-public class Auth0Api {
+public class ExampleApi {
 
     @GetMapping("/public")
     ResponseEntity<Void> publicRoute(HttpServletRequest request) {
