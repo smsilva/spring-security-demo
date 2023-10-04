@@ -1,9 +1,8 @@
 package com.github.smsilva.wasp.demo.springsecuritydemo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,16 +12,8 @@ import jakarta.servlet.http.HttpServletRequest;
 @RequestMapping("api")
 public class Auth0Api {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Auth0Api.class);
-
     @GetMapping("/public")
     ResponseEntity<Void> publicRoute(HttpServletRequest request) {
-        LOGGER.info("Received request: {}", request);
-
-        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
-            LOGGER.info("{}: {}", headerName, request.getHeader(headerName));
-        });
-
         return ResponseEntity
                 .ok()
                 .header("extra-message", "public")
@@ -31,15 +22,17 @@ public class Auth0Api {
 
     @GetMapping("/private")
     ResponseEntity<Void> privateRoute(HttpServletRequest request) {
-        LOGGER.info("Received request: {}", request);
-
-        request.getHeaderNames().asIterator().forEachRemaining(headerName -> {
-            LOGGER.info("{}: {}", headerName, request.getHeader(headerName));
-        });
-
         return ResponseEntity
                 .ok()
                 .header("extra-message", "private")
+                .build();
+    }
+
+    @PostMapping("/save")
+    ResponseEntity<Void> save(HttpServletRequest request) {
+        return ResponseEntity
+                .ok()
+                .header("extra-message", "save")
                 .build();
     }
 
