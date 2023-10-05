@@ -28,7 +28,7 @@ public class LoggingInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String methodLogLine = createMethodLineLog(request);
 
-        LOGGER.info("HttpServletRequest: %s".formatted(methodLogLine));
+        LOGGER.debug("HttpServletRequest: %s".formatted(methodLogLine));
 
         StringBuilder builder = new StringBuilder()
             .append(methodLogLine).append(lineSeparator())

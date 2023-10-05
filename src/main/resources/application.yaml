@@ -9,6 +9,5 @@ logging:
   level:
     root: INFO
     org.springframework.web: ERROR
-    com.demo: DEBUG
     org.hibernate: ERROR
-    com.github.smsilva.wasp.demo.springsecuritydemo: TRACE
+    com.github.smsilva.wasp.demo.springsecuritydemo: ${APP_LOGGING_LEVEL:TRACE}
