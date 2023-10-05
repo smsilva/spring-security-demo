@@ -6,14 +6,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import jakarta.servlet.http.HttpServletRequest;
-
 @RestController
 @RequestMapping("api")
 public class ExampleApi {
 
     @GetMapping("/public")
-    ResponseEntity<Void> publicRoute(HttpServletRequest request) {
+    ResponseEntity<Void> publicRoute() {
         return ResponseEntity
                 .ok()
                 .header("extra-message", "public")
@@ -21,7 +19,7 @@ public class ExampleApi {
     }
 
     @GetMapping("/private")
-    ResponseEntity<Void> privateRoute(HttpServletRequest request) {
+    ResponseEntity<Void> privateRoute() {
         return ResponseEntity
                 .ok()
                 .header("extra-message", "private")
@@ -29,7 +27,7 @@ public class ExampleApi {
     }
 
     @PostMapping("/save")
-    ResponseEntity<Void> save(HttpServletRequest request) {
+    ResponseEntity<Void> save() {
         return ResponseEntity
                 .ok()
                 .header("extra-message", "save")
