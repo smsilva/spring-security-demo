@@ -4,3 +4,11 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: ${AUTH0_ISSUER_URI:https://dev-xv6hd61k.us.auth0.com/}
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: ERROR
+    com.demo: DEBUG
+    org.hibernate: ERROR
+    com.github.smsilva.wasp.demo.springsecuritydemo: TRACE
