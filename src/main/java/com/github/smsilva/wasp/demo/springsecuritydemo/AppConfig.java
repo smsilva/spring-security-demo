@@ -36,17 +36,15 @@ public class AppConfig {
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(loggingInterceptor);
             }
-            
+
         };
     }
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .cors(cors -> cors
-                        .disable())
-                .csrf(csrf -> csrf
-                        .disable())
+                .cors(cors -> cors.disable())
+                .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS).permitAll()
                         .requestMatchers("/actuator/**").permitAll()

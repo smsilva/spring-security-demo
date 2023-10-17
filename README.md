@@ -39,7 +39,7 @@ curl \
 
 jq . /tmp/access-token.json
 
-export TOKEN=$(jq -r .access_token /tmp/access-token.json)
+export TOKEN="Bearer $(jq -r .access_token /tmp/access-token.json)"
 ```
 
 ## Acessing a Public Endpoint
@@ -64,6 +64,6 @@ curl \
 
 curl \
   --include \
-  --header "Authorization: Bearer ${TOKEN?}" \
+  --header "Authorization: ${TOKEN?}" \
   http://localhost:8080/api/private
 ```
